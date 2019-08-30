@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head and MetaData-->
+<head>
+  <title>Gallastegui Analytics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--Header-->
+<header>
+        <img class="img-theme" src="./images/GLogo.png">
+</header>
+
+<!--Navbar & Toggle-->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!--Bottons-->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+                <span class="icon-bar"></span>                       
+            </button>
+            <a class="navbar-brand" href="#"></a>
+    </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Home</a></li>
+            <!--li class="dropdown"-->
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="services.html">Visual Report Sample</a></li>
+            <li class="active"><a href="statistical.html">Statistical Report Sample</a></li>
+            <li><a href="resume.html">Resumé</a></li>
+            <!--li><a href="contact.html">Contact</a></li-->
+          </ul>
+        </div>
+</nav>
+  
+<div class="container">
+  <h1>Statistical Report</h1>
+  <hr>
+  <section class="main-content">
+    <h2>Description:</h2>
+    The present analysis was made using a randomized represenative sample from a digital bookstore's custumer database.
+    The purpose is to identify whether or not the users' behaviour changes depending on the platform they use to interact with the company, either the Website or the Mobile App.
+    <h2>Question:</h2>
+    <h4>Is there a significant difference in the behaviour of users depending on the platform they use?</h4>
+    <b>Ho (Null Hypothesis):</b> There is no significant difference in the behaviour of users.
+    <br>
+    <b>Ha (Alternative Hypothesis):</b> There <i>is</i> significant difference in the behaviour of users.
+    <br>
+    <b>Decision Rule:</b> <i>If p < 0.05, we accept <b>Ha</b>, otherwise we fail to reject <b>Ho<b>.</i>
+    <hr>
+    <h2>Exploratory Data Analysis:</h2>
+    <iframe width="900" height="3040" frameborder="0" scrolling="no" src="./e-Commerce_EDA.html"></iframe>
+    <hr>
+    <H2>First Insights:</H2>
+    <h5><b>1)</b> From the descriptive statistics above, we can see that user's behaviour is different when they use the App than when visiting the Website.
+      They spend three times longer on the Website than they do on the App. Let's plot them:</h5>
+    <br>
+    <img src="./images/boxplot.png">
+    <h5><b>2)</b>bThe typical user spends $500.00 a year, and has been a member for 3.5 years, as the plot bellow shows:</h5>
+    <br>
+    <img src="./images/membership-purchase.png">
+    <h5><b>3)</b> The best predictors of Yearly Purchase (<i>y</i>) seem to be Membership Seniority(<i>x1</i>) and Time on App (<i>x2</i>). 
+      These two factors seem to have a positive linear correlation with the Yearly Amount Spent by user.</h5>
+    <br>
+    <img src="./images/matrix.png">
+    <br>
+    <h5>Let's plot a 3-D Multivariate Scatterplot to visualize how the three variables behave together:</h5>
+
+      <iframe width="900" height="800" frameborder="0" scrolling="no" src="./3dplot.html"></iframe>
+    <h5>The three variables seem to have a positive correlation.</h5>
+
+      <br>
+      <br>
+      <h5>With all this information, let's perform some statistical tests to measure the significance of difference of means of platform usage by users and the degree of correlation among variables.</h5>
+    
+    <hr>
+    <h2>Statistical Tests:</h2>
+    <h3>T-Test on The Means of Two Dependent Samples</h3>
+    <h5>Even though the boxplot visibly showed that the mean of time on the Website is three times higher than the mean of the time the same user spends on the App,
+       it is convenient for statistical procedure to measure the significance of such a difference. To do so, we will perform a T-Test for Dependent Samples as the measures are from the same users on different platforms.
+      <br>
+      <br>
+      In Python, we can run the following code using the library <i>scipy</i>:
+      <br>
+      <br>
+      <img src="./images/T-test.png">
+      <br>
+      Which performs the following operation:
+      <img src="./images/equationttest.png">
+      <br>
+      It gives us a result of <i>p = 0.0001</i>. Following the decision rule, as <i>p < 0.05</i> we reject <b>Ho</b> and accept <b>Ha</b>. Meaning that at 99% of confidence, we can prove that there is a significant difference in the behaviour of users depending on the platform they use. 
+      <br>
+      </h5>
+      <br>
+      <h3>Multiple Linear Regression</h3>
+      <h5>From the various correlation matrices plotted above, we have noticed some degree of linearity in the relationship among some variables.
+        Now our task is to measure the degree by which some variables can explain another. In this case our dependent variable <i>y</i>, namely the one to be explained or predicted, is "Yearly Amount Spent", and our independent variables, it is to say, those that will explain <i>y</i>, will be "Length of Membership" <i>x1</i>, and "Time on App" <i>x2</i>. 
+        <br>
+        <br>
+        In Python we can run the following code using the Machine Learning library <i>scikit-learn</i>:
+        <img src="./images/codepython.png">
+        <br>
+        <br>
+        Which run in the background the following equation:
+        <br>
+        <br>
+        <img src="./images/multipleregression.png">
+        <br>
+        <br>
+        This model returns a fit level of <i>0.98</i>, which means that is 98% accurate:
+        <br>
+        <br>
+        <img src="./images/fitmodel.png">
+        <br>
+        <img src="./images/modelfit.png">
+        <br>
+        <br>
+        Now that we can trust our model's accuracy, we proceed to calculate the coefficients of determination,
+        which explain the extent to which our independent variables explain or predict the dependent variable.
+        <br>
+        <br>
+        <img src="./images/coefficient.png">
+        <br>
+        <br>
+        These coefficients show that when the "Length of Membership" increases by 1 per year, we can expect "Yearly Amount Spent" to increase by $61.
+        <br>
+        Every time that the "Time on App" increases by 1, we can expect "Yearly Amount Spent" to increase by $38.5.
+        <br>
+        Surprisingly, if "Time on Website" increases by 1, we can expect "Yearly Amount Spent" to increase only by $0.2.
+        <br>
+        <br>
+        From the results above, we need to ask; how is it possible that "Time on App" correlates with "Yearly Amount Spent" by $38.5 per time unit,
+         but "Time on Website" does not correlate at all, even though users tend to spend three times more on the Website than on the App?
+        <br>
+        <br>
+        Let's take a closer look at those variables and compare them. The following graphs are interactive. At first we see that indeed there is no
+        correlation between "Time on Website", and "Yearly Amount Spent", while there is a moderate correlation between "Time on App" and
+        "Yearly Amount Spent." If we select with the cursor the region of those users spending above average a year, we will see that these same users
+        generally spend more time on the App, while on the Website they seem not to follow any pattern. Indeed, when we select that region of users, the correlation
+        between "Time on Website" and "Yearly Amount Spent" turn even negative, while "Time on App" remain positively correlated with "Yearly Amount Spent."
+        <br>
+        <br>
+        <div class='tableauPlaceholder' id='viz1567173007353' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;e-&#47;e-commerce_15670203529980&#47;SpendAppWeb&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='e-commerce_15670203529980&#47;SpendAppWeb' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;e-&#47;e-commerce_15670203529980&#47;SpendAppWeb&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1567173007353');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+      </h5>
+      <hr>
+
+      <h2>Summary and Recomendations:</h2>
+      <h4>
+        1) Users behave differently depending on the platform they use to engage with the company.<br><br>
+        2) Even though users tend to be three times longer on the Website than on the App, that time is not related to their purchase activity.
+        Users might spend that time on activities like reading articles on the company's blog, which is a time consuming activity that is not directly related to the store. The company might benefit from connecting the blog content with the store.<br><br>
+        3) The time users spend on the App is more efficiently profitable. Users tend to use the App to purchase products within a short period of time.<br><br>
+        4) Seniority of membership is highly correlated with yearly spending. The company might benefit from facilitating renewing membership, especially to those with less than three years. This would increase loyalty.<br><br>
+        5) In the case of those who have been members for more than 4 years, the company might benefit from giving loyalty awards in the form of product discounts as they tend to buy more. This would increase sells. <br><br>
+      </h4>
+
+
+
+    <!--embed src="./images/Eugenio_Gallastegui_Resume.pdf" type="application/pdf" width="840px" height="1200px"/-->
+</section>
+</div>
+
+<!--Pager-->
+<div class="container">                 
+        <ul class="pager">
+          <li><a href="services.html">Visual Report Sample</a></li>
+        </ul>
+      </div>
+      <br>
+      <br>
+<hr>
+<!--Footer & Copyright-->
+<footer class="page-footer font-small">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3"> &copy;2019 Eugenio Gallastegui </a>
+        </div>
+</footer>
+
+</body>
+</html>
