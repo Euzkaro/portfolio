@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head and MetaData-->
+<head>
+  <title>Gallastegui Analytics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--Header-->
+<header>
+        <img class="img-theme" src="./images/GLogo.png">
+</header>
+
+<!--Navbar & Toggle-->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!--Bottons-->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#"></a>
+    </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Home</a></li>
+            <!--li class="dropdown"-->
+            <!--li><a href="gallery.html">Gallery</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resume.html">Resumé</a></li-->
+            <li class="active"><a href="ABA.html">ABA Techshow 2019 Sentiment Analysis</a></li>
+          </ul>
+        </div>
+</nav>
+  
+<div class="container">
+  <h1>ABA Techshow 2019</h1>
+  <hr>
+  <h2>Sentiment Analysis</h2>
+  <iframe width="900" height="800" frameborder="0" scrolling="no" src="https://chart-studio.plot.ly/~Euzkaro/6/#/"></iframe>
+
+<hr>
+
+
+<h2>Description</h2>
+<p>This is the analysis of a sample of tweets using the hashtag #ABATechShow. 
+  The sentiment is determined by the text that accompanies the hashtag.
+   This helps us to understand if the context in which the hashtag was used was positive or negative. 
+   It is also helpful for purposes of understanding the reaction from the audience towards content or events they make referece to, while using the hashtag. 
+   In this particular case, 48.3% of tweets expressed weakly positive reactions to accompany the hashtag,
+    while 20.7% expressed positive reactions. 
+    Only 13.8% used the hashtag to accompany weakly negative reactions. 
+    The remaining 17.2% of reactions had a neutral text. Overall, <b>the event had around 70% explicitly positive reactions from the audience</b>.
+    Unfortunately, due to Twitter's API restrictions on retrieving historic data, the sample size might provide different results than when the event took place. This type of analysis are more reliable when performed in real time or while users are actively using the hashtag.</p>
+
+<hr>
+<h2>What The Code Does</h2>
+<img width='900' height="300" src="./sentiment_process.png">
+<hr>
+    <h2>Source Code</h2>
+
+<iframe width="1400" height="2870" frameborder="0" scrolling="no" src="ABA_sentiment.html"></iframe>
+<hr>
+
+
+</div>
+<!--Pager-->
+<div class="container">                 
+        <ul class="pager">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+<hr>
+<!--Footer & Copyright-->
+<footer class="page-footer font-small">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3"> &copy;2019 Eugenio Gallastegui </a>
+        </div>
+</footer>
+
+</body>
+</html>
